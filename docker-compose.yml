@@ -2,8 +2,10 @@ version: "3"
 services:
   redis:
     image: "redis"
+    restart: "always"
   rabbit:
     image: "rabbitmq:3-management"
+    restart: "always"
   bridge:
     build: .
     environment:
@@ -11,3 +13,4 @@ services:
       - QUEUE_URL=amqp://rabbit
       - REDIS_URL=redis://redis
     command: "true"
+    restart: "always"
